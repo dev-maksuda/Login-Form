@@ -28,7 +28,7 @@ btn.addEventListener("click", (event) => {
     event.preventDefault(); 
     let isValid = true;
 
-    // 1. Name field validation
+    // 1. Name validation
     if (!username.value) {
         nameError.innerHTML = "Name is required";
         username.style.border = "1px solid red";
@@ -38,7 +38,7 @@ btn.addEventListener("click", (event) => {
         username.style.border = "1px solid gray";
     }
 
-    // 2. Email field validation
+    // 2. Email validation
     if (!email.value) {
         emailError.innerHTML = "Email is required";
         email.style.border = "1px solid red";
@@ -52,7 +52,7 @@ btn.addEventListener("click", (event) => {
         email.style.border = "1px solid gray";
     }
 
-    // 3. Password field validation
+    // 3. Password validation
     if (!password.value) {
         passError.innerHTML = "password required";
         password.style.border = "1px solid red";
@@ -66,7 +66,7 @@ btn.addEventListener("click", (event) => {
         password.style.border = "1px solid gray";
     }
 
-    // 4. Confirm Password field validation
+    // 4. Confirm Password validation
     if (!confirmPassword.value) {
         cpassError.innerHTML = "Confirm Password is required";
         confirmPassword.style.border = "1px solid red";
@@ -91,7 +91,7 @@ btn.addEventListener("click", (event) => {
     genderError.innerHTML = genderSelected ? "" : "Please select gender";
     if (!genderSelected) isValid = false;
 
-    // 6. File upload field validation
+    // 6. File upload  validation
     if (!fileUpload.value) {
         fileError.innerHTML = "File is required";
         fileUpload.style.border = "1px solid red";
@@ -101,7 +101,7 @@ btn.addEventListener("click", (event) => {
         fileUpload.style.border = "1px solid gray";
     }
 
-    // 7. Textarea bio field validation
+    // 7. Textarea bio validation
     if (!bio.value) {
         bioError.innerHTML = "Bio is required";
         bio.style.border = "1px solid red";
