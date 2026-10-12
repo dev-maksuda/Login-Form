@@ -71,12 +71,16 @@ btn.addEventListener("click", () => {
         confirmPassword.style.border = "1px solid gray";
     }
 
-    let genderSelected = false;
-    for (const r of genderRadios) { 
-        if (r.checked) genderSelected = true; 
+        let genderSelected = false;
+    for (let i = 0; i < genderRadios.length; i++) { 
+        if (genderRadios[i].checked) {
+            genderSelected = true; 
+            break;
+        }
     }
-    genderError.innerHTML = genderSelected ? "" : "Please select gender";
-    if (!genderSelected) isValid = false;
+        genderError.innerHTML = genderSelected ? "" : "Please select gender";
+        if (!genderSelected) isValid = false;
+
 
     if (!fileUpload.value) {
         fileError.innerHTML = "File is required";
