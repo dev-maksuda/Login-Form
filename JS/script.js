@@ -1,3 +1,4 @@
+// Selecting form elements
 const btn = document.querySelector(".btn");
 const username = document.querySelector("#username");
 const email = document.querySelector("#email");
@@ -8,6 +9,7 @@ const fileUpload = document.querySelector("#fileUpload");
 const bio = document.querySelector("#bio");
 const terms = document.querySelector("#terms");
 
+// Selecting error display elements
 const nameError = document.querySelector("#nameError");
 const emailError = document.querySelector("#emailError");
 const passError = document.querySelector("#passError");
@@ -17,12 +19,16 @@ const fileError = document.querySelector("#fileError");
 const bioError = document.querySelector("#bioError");
 const termsError = document.querySelector("#termsError");
 
+// Validation regular expressions
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
-btn.addEventListener("click", () => {
+// Event listener for submit button click
+btn.addEventListener("click", (event) => {
+    event.preventDefault(); 
     let isValid = true;
 
+    // 1. Name field validation
     if (!username.value) {
         nameError.innerHTML = "Name is required";
         username.style.border = "1px solid red";
@@ -32,6 +38,7 @@ btn.addEventListener("click", () => {
         username.style.border = "1px solid gray";
     }
 
+    // 2. Email field validation
     if (!email.value) {
         emailError.innerHTML = "Email is required";
         email.style.border = "1px solid red";
@@ -45,6 +52,7 @@ btn.addEventListener("click", () => {
         email.style.border = "1px solid gray";
     }
 
+    // 3. Password field validation
     if (!password.value) {
         passError.innerHTML = "password required";
         password.style.border = "1px solid red";
@@ -58,6 +66,7 @@ btn.addEventListener("click", () => {
         password.style.border = "1px solid gray";
     }
 
+    // 4. Confirm Password field validation
     if (!confirmPassword.value) {
         cpassError.innerHTML = "Confirm Password is required";
         confirmPassword.style.border = "1px solid red";
@@ -71,17 +80,18 @@ btn.addEventListener("click", () => {
         confirmPassword.style.border = "1px solid gray";
     }
 
-        let genderSelected = false;
+    // 5. Gender radio buttons validation
+    let genderSelected = false;
     for (let i = 0; i < genderRadios.length; i++) { 
         if (genderRadios[i].checked) {
             genderSelected = true; 
             break;
         }
     }
-        genderError.innerHTML = genderSelected ? "" : "Please select gender";
-        if (!genderSelected) isValid = false;
+    genderError.innerHTML = genderSelected ? "" : "Please select gender";
+    if (!genderSelected) isValid = false;
 
-
+    // 6. File upload field validation
     if (!fileUpload.value) {
         fileError.innerHTML = "File is required";
         fileUpload.style.border = "1px solid red";
@@ -91,6 +101,7 @@ btn.addEventListener("click", () => {
         fileUpload.style.border = "1px solid gray";
     }
 
+    // 7. Textarea bio field validation
     if (!bio.value) {
         bioError.innerHTML = "Bio is required";
         bio.style.border = "1px solid red";
@@ -100,11 +111,13 @@ btn.addEventListener("click", () => {
         bio.style.border = "1px solid gray";
     }
 
+    // 8. Terms checkbox validation
     termsError.innerHTML = terms.checked ? "" : "Agree to terms";
     if (!terms.checked) isValid = false;
 
+    // Reset form using querySelector if validation passes
     if (isValid) {
         alert("Registration Successful!");
-        document.getElementById("registrationForm").reset();
+        document.querySelector("#registrationForm").reset();
     }
 });
